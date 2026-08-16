@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import { Activity, CalendarCheck2, ShieldCheck, Stethoscope } from 'lucide-react';
+import { CalendarCheck2, ShieldCheck, Stethoscope } from 'lucide-react';
+import logoMark from '@/assets/logo-mark.jpg';
 
 const highlights = [
   { icon: Stethoscope, text: 'Manage doctors, patients and appointments in one place' },
@@ -9,10 +10,10 @@ const highlights = [
 
 export function AuthLayout() {
   return (
-    <div className="flex min-h-screen bg-slate-50">
+    <div className="flex min-h-screen bg-gradient-to-b from-[#eaf7f8] to-[#f4fbfb]">
       {/* Brand panel */}
-      <div className="relative hidden w-1/2 overflow-hidden bg-slate-950 lg:flex lg:flex-col lg:justify-between lg:p-12">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary-700 via-primary-900 to-slate-950" />
+      <div className="relative hidden w-1/2 overflow-hidden bg-[#04171c] lg:flex lg:flex-col lg:justify-between lg:p-12">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0f4a52] via-[#0a2e34] to-[#04171c]" />
         <div className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 animate-blob rounded-full bg-accent-500/30 blur-3xl" />
         <div
           className="pointer-events-none absolute -right-16 bottom-1/4 h-80 w-80 animate-blob rounded-full bg-primary-400/30 blur-3xl"
@@ -28,9 +29,11 @@ export function AuthLayout() {
         />
 
         <div className="relative flex items-center gap-2.5">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm ring-1 ring-white/20">
-            <Activity className="h-5 w-5 text-white" />
-          </div>
+          <img
+            src={logoMark}
+            alt="Medix"
+            className="h-11 w-11 rounded-xl object-cover shadow-glow ring-1 ring-white/20"
+          />
           <span className="text-lg font-semibold text-white">Medix</span>
         </div>
 
@@ -58,9 +61,7 @@ export function AuthLayout() {
       {/* Form panel */}
       <div className="flex w-full flex-col items-center justify-center px-6 py-12 lg:w-1/2">
         <div className="mb-8 flex items-center gap-2.5 lg:hidden">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-accent-500 text-white shadow-glow">
-            <Activity className="h-5 w-5" />
-          </div>
+          <img src={logoMark} alt="Medix" className="h-10 w-10 rounded-xl object-cover shadow-glow" />
           <span className="text-lg font-semibold text-slate-900">Medix</span>
         </div>
 

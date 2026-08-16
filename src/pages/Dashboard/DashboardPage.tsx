@@ -16,6 +16,8 @@ import {
 } from 'recharts';
 import { StatCard } from '@/components/ui/StatCard';
 import { ChartCard } from '@/components/ui/ChartCard';
+import { useLanguage } from '@/context/LanguageContext';
+import { useTheme } from '@/context/ThemeContext';
 import { useDashboard } from '@/hooks/useDashboard';
 import { useUsers } from '@/hooks/useUsers';
 import { useDoctors } from '@/hooks/useDoctors';
@@ -38,6 +40,10 @@ function useMonthlyGrowth(createdDates: string[] | undefined) {
 }
 
 export function DashboardPage() {
+  const { t } = useLanguage();
+  const { theme } = useTheme();
+  const gridStroke = theme === 'dark' ? '#334155' : '#e2e8f0';
+  const axisStroke = theme === 'dark' ? '#64748b' : '#94a3b8';
   const { data: stats, isLoading: statsLoading } = useDashboard();
   const { data: users } = useUsers();
   const { data: doctors } = useDoctors();
@@ -74,67 +80,67 @@ export function DashboardPage() {
     <div className="flex flex-col gap-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <StatCard
-          label="Total Users"
+          label={t('dashboard.totalUsers')}
           value={stats?.totalUsers ?? 0}
           icon={Users}
           accent="blue"
           isLoading={statsLoading}
         />
         <StatCard
-          label="Total Doctors"
+          label={t('dashboard.totalDoctors')}
           value={stats?.totalDoctors ?? 0}
           icon={Stethoscope}
           accent="violet"
           isLoading={statsLoading}
         />
         <StatCard
-          label="Total Patients"
+          label={t('dashboard.totalPatients')}
           value={stats?.totalPatients ?? 0}
           icon={HeartPulse}
           accent="rose"
           isLoading={statsLoading}
         />
         <StatCard
-          label="Total Appointments"
+          label={t('dashboard.totalAppointments')}
           value={stats?.totalAppointments ?? 0}
           icon={CalendarClock}
           accent="amber"
           isLoading={statsLoading}
         />
         <StatCard
-          label="Today's Appointments"
+          label={t('dashboard.todayAppointments')}
           value={stats?.todayAppointments ?? 0}
           icon={CalendarCheck}
           accent="emerald"
           isLoading={statsLoading}
         />
         <StatCard
-          label="Published Articles"
+          label={t('dashboard.publishedArticles')}
           value={publishedArticles}
           icon={Newspaper}
-          accent="blue"
+          accent="cyan"
         />
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <ChartCard title="Users Growth">
+        <ChartCard title={t('dashboard.usersGrowth')}>
           <ResponsiveContainer width="100%" height={260}>
             <LineChart data={usersGrowth}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="#94a3b8" />
-              <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke="#94a3b8" />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+              <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke={axisStroke} />
+              <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke={axisStroke} />
               <Tooltip />
               <Line type="monotone" dataKey="count" stroke={CHART_COLORS[0]} strokeWidth={2} dot={false} />
             </LineChart>
           </ResponsiveContainer>
         </ChartCard>
 
-        <ChartCard title="Appointments by Status">
+        <ChartCard title={t('dashboard.appointmentsByStatus')}>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={appointmentsByStatus}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="status" tick={{ fontSize: 12 }} stroke="#94a3b8" />
-              <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke="#94a3b8" />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+              <XAxis dataKey="status" tick={{ fontSize: 12 }} stroke={axisStroke} />
+              <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke={axisStroke} />
               <Tooltip />
               <Bar dataKey="count" radius={[6, 6, 0, 0]}>
                 {appointmentsByStatus.map((entry, index) => (
@@ -145,7 +151,7 @@ export function DashboardPage() {
           </ResponsiveContainer>
         </ChartCard>
 
-        <ChartCard title="Doctors by Specialization">
+        <ChartCard title={t('dashboard.doctorsBySpecialization')}>
           <ResponsiveContainer width="100%" height={260}>
             <PieChart>
               <Pie
@@ -165,12 +171,12 @@ export function DashboardPage() {
           </ResponsiveContainer>
         </ChartCard>
 
-        <ChartCard title="Patients Growth">
+        <ChartCard title={t('dashboard.patientsGrowth')}>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={patientsGrowth}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="#94a3b8" />
-              <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke="#94a3b8" />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
+              <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke={axisStroke} />
+              <YAxis allowDecimals={false} tick={{ fontSize: 12 }} stroke={axisStroke} />
               <Tooltip />
               <Bar dataKey="count" fill={CHART_COLORS[2]} radius={[6, 6, 0, 0]} />
             </BarChart>

@@ -80,17 +80,17 @@ export function DataTable<T>({
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-slate-200 bg-slate-50/80">
+          <thead className="border-b border-slate-200 bg-slate-50/80 dark:border-slate-800 dark:bg-slate-800/50">
             <tr>
               {columns.map((column) => (
                 <th
                   key={column.key}
                   className={cn(
-                    'whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500',
-                    column.sortValue && 'cursor-pointer select-none hover:text-slate-700',
+                    'whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400',
+                    column.sortValue && 'cursor-pointer select-none hover:text-slate-700 dark:hover:text-slate-200',
                     column.className,
                   )}
                   onClick={() => toggleSort(column)}
@@ -113,11 +113,11 @@ export function DataTable<T>({
             </tr>
           </thead>
           {!isLoading && !isError && data.length > 0 && (
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {pageItems.map((row) => (
-                <tr key={rowKey(row)} className="transition-colors hover:bg-slate-50/70">
+                <tr key={rowKey(row)} className="transition-colors hover:bg-slate-50/70 dark:hover:bg-slate-800/50">
                   {columns.map((column) => (
-                    <td key={column.key} className={cn('whitespace-nowrap px-4 py-3.5 text-slate-700', column.className)}>
+                    <td key={column.key} className={cn('whitespace-nowrap px-4 py-3.5 text-slate-700 dark:text-slate-300', column.className)}>
                       {column.render(row)}
                     </td>
                   ))}

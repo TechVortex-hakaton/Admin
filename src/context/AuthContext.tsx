@@ -9,6 +9,14 @@ interface AuthContextValue {
   isLoading: boolean;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<User>;
+  loginWithToken: (token: string) => Promise<User>;
+  register: (fullName: string, email: string, password: string) => Promise<{ user: User; token: string }>;
+  updateProfile: (payload: {
+    fullName?: string;
+    email?: string;
+    currentPassword?: string;
+    newPassword?: string;
+  }) => Promise<User>;
   logout: () => void;
 }
 
@@ -41,6 +49,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return loggedInUser;
   }, []);
 
+  const loginWithToken = useCallback(async (token: string) => {
+    localStorage.setItem(TOKEN_KEY, token);
+    try {
+      const me = await authService.me();
+      setUser(me);
+      return me;
+    } catch (error) {
+      localStorage.removeItem(TOKEN_KEY);
+      throw error;
+    }
+  }, []);
+
+  const register = useCallback(async (fullName: string, email: string, password: string) => {
+    const result = await authService.register(fullName, email, password);
+    return { user: result.user, token: result.token };
+  }, []);
+
+  const updateProfile = useCallback(
+    async (payload: { fullName?: string; email?: string; currentPassword?: string; newPassword?: string }) => {
+      const updated = await authService.updateMe(payload);
+      setUser(updated);
+      return updated;
+    },
+    [],
+  );
+
   const logout = useCallback(() => {
     authService.logout().catch(() => undefined);
     localStorage.removeItem(TOKEN_KEY);
@@ -48,8 +82,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ user, isLoading, isAuthenticated: !!user, login, logout }),
-    [user, isLoading, login, logout],
+    () => ({
+      user,
+      isLoading,
+      isAuthenticated: !!user,
+      login,
+      loginWithToken,
+      register,
+      updateProfile,
+      logout,
+    }),
+    [user, isLoading, login, loginWithToken, register, updateProfile, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

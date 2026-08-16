@@ -20,4 +20,4 @@ export const APPOINTMENT_STATUS_COLORS: Record<AppointmentStatus, string> = {
   CANCELLED: 'bg-rose-100 text-rose-700',
 };
 
-export const CHART_COLORS = ['#2563eb', '#0ea5e9', '#f59e0b', '#10b981', '#ef4444', '#8b5cf6'];
+export const CHART_COLORS = ['#0d9c6c', '#06b6d4', '#f59e0b', '#34d399', '#6366f1', '#ef4444'];

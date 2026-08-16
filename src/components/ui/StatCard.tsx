@@ -20,7 +20,7 @@ const accentClasses: Record<NonNullable<StatCardProps['accent']>, string> = {
 
 export function StatCard({ label, value, icon: Icon, accent = 'blue', isLoading }: StatCardProps) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-card">
+    <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-card dark:border-slate-800 dark:bg-slate-900">
       <div
         className={cn(
           'pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-gradient-to-br opacity-[0.08] transition-transform group-hover:scale-125',
@@ -37,11 +37,11 @@ export function StatCard({ label, value, icon: Icon, accent = 'blue', isLoading 
           <Icon className="h-5 w-5" />
         </div>
         <div className="min-w-0">
-          <p className="text-sm text-slate-500">{label}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{label}</p>
           {isLoading ? (
-            <div className="mt-1.5 h-6 w-16 animate-pulse rounded bg-slate-200" />
+            <div className="mt-1.5 h-6 w-16 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
           ) : (
-            <p className="text-2xl font-bold tracking-tight text-slate-900">{value}</p>
+            <p className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">{value}</p>
           )}
         </div>
       </div>

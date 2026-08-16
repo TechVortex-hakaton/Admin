@@ -13,7 +13,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
     return (
       <div className="flex flex-col gap-1.5">
         {label && (
-          <label htmlFor={inputId} className="text-sm font-medium text-slate-700">
+          <label htmlFor={inputId} className="text-sm font-medium text-slate-700 dark:text-slate-300">
             {label}
           </label>
         )}
@@ -24,6 +24,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
           className={cn(
             'w-full rounded-xl border border-slate-200 px-3 py-2 text-sm text-slate-900 shadow-soft transition-shadow',
             'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500',
+            'dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder:text-slate-500',
             error && 'border-rose-300 focus:ring-rose-500/30 focus:border-rose-400',
             className,
           )}

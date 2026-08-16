@@ -9,8 +9,22 @@ body,
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-slate-50 text-slate-900 antialiased transition-colors;
   font-feature-settings: 'cv11', 'ss01';
+  --toast-bg: #ffffff;
+  --toast-fg: #0f172a;
+  --toast-border: #e2e8f0;
+}
+
+.dark body {
+  @apply bg-slate-950 text-slate-100;
+}
+
+:root.dark body,
+.dark {
+  --toast-bg: #1e293b;
+  --toast-fg: #f1f5f9;
+  --toast-border: #334155;
 }
 
 * {
@@ -23,7 +37,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded-full;
+  @apply bg-slate-300 rounded-full dark:bg-slate-700;
 }
 
 ::-webkit-scrollbar-track {

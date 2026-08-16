@@ -1,20 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
         primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          200: '#c7d2fe',
-          300: '#a5b4fc',
-          400: '#818cf8',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          800: '#3730a3',
-          900: '#312e81',
+          50: '#ecfdf5',
+          100: '#d1fae8',
+          200: '#a3f3d1',
+          300: '#6ee7b3',
+          400: '#34d399',
+          500: '#16b981',
+          600: '#0d9c6c',
+          700: '#0a7c58',
+          800: '#0a6248',
+          900: '#08503c',
         },
         accent: {
           400: '#22d3ee',
@@ -28,7 +29,7 @@ export default {
       boxShadow: {
         soft: '0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06)',
         card: '0 1px 2px 0 rgb(15 23 42 / 0.04), 0 8px 24px -8px rgb(15 23 42 / 0.10)',
-        glow: '0 0 0 1px rgb(99 102 241 / 0.05), 0 8px 24px -4px rgb(99 102 241 / 0.25)',
+        glow: '0 0 0 1px rgb(13 156 108 / 0.05), 0 8px 24px -4px rgb(13 156 108 / 0.28)',
       },
       keyframes: {
         'fade-in': {

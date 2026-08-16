@@ -16,9 +16,10 @@ const variantClasses: Record<Variant, string> = {
   primary:
     'bg-primary-600 text-white hover:bg-primary-700 shadow-soft focus-visible:ring-primary-500',
   secondary:
-    'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 shadow-soft focus-visible:ring-slate-400',
+    'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 shadow-soft focus-visible:ring-slate-400 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:bg-slate-700',
   danger: 'bg-rose-600 text-white hover:bg-rose-700 shadow-soft focus-visible:ring-rose-500',
-  ghost: 'bg-transparent text-slate-600 hover:bg-slate-100 focus-visible:ring-slate-400',
+  ghost:
+    'bg-transparent text-slate-600 hover:bg-slate-100 focus-visible:ring-slate-400 dark:text-slate-300 dark:hover:bg-slate-800',
 };
 
 const sizeClasses: Record<Size, string> = {
