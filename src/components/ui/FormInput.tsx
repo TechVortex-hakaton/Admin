@@ -21,9 +21,9 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
           id={inputId}
           ref={ref}
           className={cn(
-            'w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900',
-            'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500',
-            error && 'border-rose-400 focus:ring-rose-500 focus:border-rose-500',
+            'w-full rounded-xl border border-slate-200 px-3 py-2 text-sm text-slate-900 shadow-soft transition-shadow',
+            'placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500',
+            error && 'border-rose-300 focus:ring-rose-500/30 focus:border-rose-400',
             className,
           )}
           {...props}

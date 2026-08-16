@@ -80,16 +80,16 @@ export function DataTable<T>({
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-slate-200 bg-slate-50">
+          <thead className="border-b border-slate-200 bg-slate-50/80">
             <tr>
               {columns.map((column) => (
                 <th
                   key={column.key}
                   className={cn(
-                    'whitespace-nowrap px-4 py-3 font-medium text-slate-500',
+                    'whitespace-nowrap px-4 py-3 text-xs font-semibold uppercase tracking-wide text-slate-500',
                     column.sortValue && 'cursor-pointer select-none hover:text-slate-700',
                     column.className,
                   )}
@@ -115,7 +115,7 @@ export function DataTable<T>({
           {!isLoading && !isError && data.length > 0 && (
             <tbody className="divide-y divide-slate-100">
               {pageItems.map((row) => (
-                <tr key={rowKey(row)} className="hover:bg-slate-50/70">
+                <tr key={rowKey(row)} className="transition-colors hover:bg-slate-50/70">
                   {columns.map((column) => (
                     <td key={column.key} className={cn('whitespace-nowrap px-4 py-3.5 text-slate-700', column.className)}>
                       {column.render(row)}

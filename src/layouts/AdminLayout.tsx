@@ -21,12 +21,14 @@ export function AdminLayout() {
   const title = PAGE_TITLES[location.pathname] ?? 'Admin Panel';
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50">
+    <div className="flex h-screen overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100/60">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex min-w-0 flex-1 flex-col">
         <Navbar onMenuClick={() => setSidebarOpen(true)} title={title} />
         <main className="flex-1 overflow-y-auto p-4 sm:p-6">
-          <Outlet />
+          <div className="mx-auto max-w-7xl animate-fade-in">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

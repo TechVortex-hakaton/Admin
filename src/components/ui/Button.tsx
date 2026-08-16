@@ -13,16 +13,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<Variant, string> = {
-  primary: 'bg-primary-600 text-white hover:bg-primary-700 focus-visible:ring-primary-500',
+  primary:
+    'bg-primary-600 text-white hover:bg-primary-700 shadow-soft focus-visible:ring-primary-500',
   secondary:
-    'bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 focus-visible:ring-slate-400',
-  danger: 'bg-rose-600 text-white hover:bg-rose-700 focus-visible:ring-rose-500',
+    'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 shadow-soft focus-visible:ring-slate-400',
+  danger: 'bg-rose-600 text-white hover:bg-rose-700 shadow-soft focus-visible:ring-rose-500',
   ghost: 'bg-transparent text-slate-600 hover:bg-slate-100 focus-visible:ring-slate-400',
 };
 
 const sizeClasses: Record<Size, string> = {
-  sm: 'text-sm px-3 py-1.5 gap-1.5',
-  md: 'text-sm px-4 py-2 gap-2',
+  sm: 'text-sm px-3 py-1.5 gap-1.5 rounded-lg',
+  md: 'text-sm px-4 py-2 gap-2 rounded-xl',
 };
 
 export function Button({
@@ -38,9 +39,9 @@ export function Button({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center rounded-lg font-medium transition-colors',
+        'inline-flex items-center justify-center font-medium transition-all active:scale-[0.98]',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-        'disabled:opacity-50 disabled:pointer-events-none',
+        'disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100',
         variantClasses[variant],
         sizeClasses[size],
         className,
