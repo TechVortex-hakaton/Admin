@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Bell, ChevronDown, LogOut, Menu, Moon, Settings, Sun } from 'lucide-react';
+import { Bell, ChevronDown, LogOut, Menu, Settings } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
-import { useTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { getLocalAvatar } from '@/utils/avatar';
+import { ThemeSwitcher } from './ThemeSwitcher';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface NavbarProps {
   onMenuClick: () => void;
@@ -13,7 +14,6 @@ interface NavbarProps {
 
 export function Navbar({ onMenuClick, title }: NavbarProps) {
   const { user, logout } = useAuth();
-  const { theme, toggleTheme } = useTheme();
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,7 +38,7 @@ export function Navbar({ onMenuClick, title }: NavbarProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200/80 bg-white/80 px-4 py-3.5 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-900/80 sm:px-6">
+    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-slate-200/80 bg-white/80 px-4 py-3.5 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-900/80 green:border-primary-100 green:bg-primary-50/70 sm:px-6">
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -52,14 +52,8 @@ export function Navbar({ onMenuClick, title }: NavbarProps) {
       </div>
 
       <div className="flex items-center gap-2">
-        <button
-          type="button"
-          onClick={toggleTheme}
-          className="rounded-full p-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
-          aria-label="Toggle theme"
-        >
-          {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-        </button>
+        <LanguageSwitcher />
+        <ThemeSwitcher />
 
         <button
           type="button"

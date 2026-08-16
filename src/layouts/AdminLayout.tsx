@@ -24,7 +24,7 @@ export function AdminLayout() {
   const title = titleKey ? t(titleKey) : 'Medix Admin';
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100/60 dark:from-slate-950 dark:to-slate-900">
+    <div className="flex h-screen overflow-hidden bg-white dark:bg-slate-950 green:bg-primary-50/40">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex min-w-0 flex-1 flex-col">
         <Navbar onMenuClick={() => setSidebarOpen(true)} title={title} />

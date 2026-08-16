@@ -57,7 +57,7 @@ function NavItem({
           'group relative flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-all',
           isActive
             ? 'bg-primary-600 text-white shadow-glow'
-            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white',
+            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white green:text-primary-800 green:hover:bg-primary-100 green:hover:text-primary-900',
         )
       }
     >
@@ -69,7 +69,7 @@ function NavItem({
 
 function SectionLabel({ children }: { children: string }) {
   return (
-    <p className="px-3 pb-1.5 pt-5 text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+    <p className="px-3 pb-1.5 pt-5 text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 green:text-primary-500">
       {children}
     </p>
   );
@@ -97,7 +97,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
       )}
       <aside
         className={cn(
-          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform lg:static lg:translate-x-0 dark:border-slate-800 dark:bg-slate-900',
+          'fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200 bg-white transition-transform lg:static lg:translate-x-0 dark:border-slate-800 dark:bg-slate-900 green:border-primary-100 green:bg-primary-50/60',
           isOpen ? 'translate-x-0' : '-translate-x-full',
         )}
       >
@@ -109,8 +109,10 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               className="h-9 w-9 shrink-0 rounded-xl object-cover shadow-soft ring-1 ring-slate-900/5 dark:ring-white/10"
             />
             <div className="leading-tight">
-              <span className="block text-sm font-semibold text-slate-900 dark:text-white">Medix</span>
-              <span className="block text-[11px] font-medium text-slate-400 dark:text-slate-500">
+              <span className="block text-sm font-semibold text-slate-900 dark:text-white green:text-primary-900">
+                Medix
+              </span>
+              <span className="block text-[11px] font-medium text-slate-400 dark:text-slate-500 green:text-primary-500">
                 Admin Panel
               </span>
             </div>
@@ -148,7 +150,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </div>
         </nav>
 
-        <div className="border-t border-slate-100 p-3 dark:border-slate-800">
+        <div className="border-t border-slate-100 p-3 dark:border-slate-800 green:border-primary-100">
           <div className="flex items-center gap-2.5 rounded-xl px-2 py-2">
             {avatar ? (
               <img src={avatar} alt="" className="h-9 w-9 shrink-0 rounded-full object-cover" />
@@ -158,17 +160,17 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               </div>
             )}
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium leading-tight text-slate-900 dark:text-slate-100">
+              <p className="truncate text-sm font-medium leading-tight text-slate-900 dark:text-slate-100 green:text-primary-900">
                 {user?.fullName}
               </p>
-              <p className="truncate text-xs leading-tight text-slate-400 dark:text-slate-500">
+              <p className="truncate text-xs leading-tight text-slate-400 dark:text-slate-500 green:text-primary-500">
                 {user ? ROLE_LABELS[user.role] : ''}
               </p>
             </div>
             <button
               type="button"
               onClick={logout}
-              className="shrink-0 rounded-lg p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40"
+              className="shrink-0 rounded-lg p-1.5 text-slate-400 hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/40 green:hover:bg-rose-100"
               title={t('nav.logout')}
               aria-label={t('nav.logout')}
             >

@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
-import { dictionaries, type Locale } from '@/i18n/translations';
+import { dictionaries, LOCALES, type Locale } from '@/i18n/translations';
 
 export type LanguageSetting = 'auto' | Locale;
 
@@ -9,13 +9,13 @@ const STORAGE_KEY = 'medix_lang';
 function detectLocale(): Locale {
   const lang = navigator.language?.toLowerCase() ?? '';
   if (lang.startsWith('ru')) return 'ru';
-  if (lang.startsWith('uz')) return 'uz';
+  if (lang.startsWith('uz')) return lang.includes('cyrl') ? 'uz-cyrl' : 'uz';
   return 'en';
 }
 
 function getInitialSetting(): LanguageSetting {
   const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === 'auto' || stored === 'en' || stored === 'ru' || stored === 'uz') return stored;
+  if (stored === 'auto' || LOCALES.includes(stored as Locale)) return stored as LanguageSetting;
   return 'auto';
 }
 

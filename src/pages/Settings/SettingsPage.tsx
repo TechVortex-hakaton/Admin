@@ -4,9 +4,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import toast from 'react-hot-toast';
-import { Camera, Fingerprint, Languages, LogOut, Moon, ScanFace, Sun, Trash2 } from 'lucide-react';
+import { Camera, Fingerprint, Languages, Leaf, LogOut, Moon, ScanFace, Sun, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { FormInput } from '@/components/ui/FormInput';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
@@ -296,35 +297,12 @@ export function SettingsPage() {
 
           <div className="flex items-center gap-3 rounded-xl border border-slate-200 p-3.5 dark:border-slate-700">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
-              {theme === 'dark' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+              {theme === 'dark' ? <Moon className="h-5 w-5" /> : theme === 'green' ? <Leaf className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-slate-800 dark:text-slate-100">{t('settings.theme')}</p>
             </div>
-            <div className="flex gap-1 rounded-lg bg-slate-100 p-1 dark:bg-slate-800">
-              <button
-                type="button"
-                onClick={() => setTheme('light')}
-                className={`rounded-md px-3 py-1 text-xs font-medium transition-colors ${
-                  theme === 'light'
-                    ? 'bg-white text-slate-900 shadow-soft'
-                    : 'text-slate-500 dark:text-slate-400'
-                }`}
-              >
-                {t('settings.themeLight')}
-              </button>
-              <button
-                type="button"
-                onClick={() => setTheme('dark')}
-                className={`rounded-md px-3 py-1 text-xs font-medium transition-colors ${
-                  theme === 'dark'
-                    ? 'bg-slate-700 text-white shadow-soft'
-                    : 'text-slate-500 dark:text-slate-400'
-                }`}
-              >
-                {t('settings.themeDark')}
-              </button>
-            </div>
+            <ThemeSwitcher />
           </div>
         </div>
       </SectionCard>
